@@ -85,5 +85,10 @@ font-family: Marker Felt, fantasy;
 .footer{
 
   clear:both;
-
+background-color: #071f22;
+border-radius: 25px;
+width: 800px;
+height: 100px;
+padding-left: 30px;
+padding-top: 20px;
 }

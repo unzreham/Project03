@@ -2,23 +2,37 @@ import {React,  useState, useEffect } from 'react';
 
 function Menue(props) {
 
-    
-    const lunch = localStorage.getItem("lunch")
-    const lunch2 = JSON.parse(lunch)
-  
-    const breakfast = localStorage.getItem("breakfast")
-    const breakfast2 = JSON.parse(breakfast)
 
-    const dinner = localStorage.getItem("dinner")
-    const dinner2 = JSON.parse(dinner)
+  const lunch = localStorage.getItem("lunch")
+  const lunch2 = JSON.parse(lunch)
+
+  const breakfast = localStorage.getItem("breakfast")
+  const breakfast2 = JSON.parse(breakfast)
+
+  const dinner = localStorage.getItem("dinner")
+  const dinner2 = JSON.parse(dinner)
+
+    const checkNull=(val)=> {
+      if (val === null) {
+     return 0
+      }else{
+        return JSON.parse(val).calories
+      }
+    }
+    const lunchCal =   checkNull(lunch)
+    const breakfastCal = checkNull(breakfast)
+    const dinnercal = checkNull(dinner)
+    console.log(lunchCal)
+    console.log(breakfastCal)
+    console.log(dinnercal)
 
 
-    const total = breakfast2.calories + lunch2.calories +dinner2.calories;
+    const total = breakfastCal + lunchCal +dinnercal;
 
     return (
         <div>
              <div>
-             {breakfast2 != null &&
+             {breakfast2  != null &&
       
 
 <div class="card cardOne">
@@ -35,7 +49,7 @@ function Menue(props) {
 
       }
 
-             {lunch2 != null &&
+             {lunch2  != null &&
 <div class="card cardOne">
 <div class="card-header">Lunch</div>
   <img src= {lunch2.image}  alt="" style={{width: "290px", height:"300px" }} /> 
@@ -69,11 +83,12 @@ function Menue(props) {
 
       }
         </div>
-
         <div className ="footer">
-          <h2> The total  calories is {total} </h2>
-        </div>
-        </div>
+          <h2 style = {{ color :"white"}}> The total  calories is {total} </h2>
+       
+  </div>
+</div>
+
     );
 }
 
